@@ -6,16 +6,16 @@ with open(path, 'r') as f:
 
 v = [int(i) for i in lines[0].strip().split(',')]
 
-d = [0 for i in lines[0]]
+d = [0 for i in v]
 
 l = len(v)
 for i in range(l):
     for j in range(l):
         d[i] += abs(v[i] - v[j])
-
-print(d)
+#print(v)
+#print(d)
 min_val = min(d)
 min_ind = d.index(min_val)
 print(min_val)
-print(min_ind)
-print(v[min_ind])
+#print(min_ind)
+#print(v[min_ind])
