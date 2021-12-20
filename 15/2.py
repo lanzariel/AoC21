@@ -7,8 +7,10 @@ with open(path, 'r') as f:
 #print(lines) 
 
 def shift(n, times):
-    ans = n % 9
-    ans += 1
+    ans = n
+    for i in range(times):
+        ans = ans % 9
+        ans += 1
     return ans
 
 def shift_board(b, times):
@@ -17,8 +19,20 @@ def shift_board(b, times):
 
 def cbind(l_of_b):
     ans = []
-    
+    for row_num in range(len(l_of_b[0])):
+        bigrow = []
+        for board in l_of_b:
+            bigrow.extend(board[row_num])
+        ans.append(bigrow)
+    return ans
 
+def rbind(l_of_b):
+    return [j for i in l_of_b for j in i]
+
+def make_big(board):
+    h_5 = cbind([shift_board(board, i) for i in range(5)])
+    ans = rbind([shift_board(h_5, i) for i in range(5)])
+    return ans
 
 class Board:
     def __init__(self, lns):
@@ -71,6 +85,6 @@ class Board:
     def give_ans(self):
         return self.mindist[self.rows-1][self.cols-1]
 
-b = Board(lines)
+b = Board(make_big(lines))
 b.solve()
 print(b.give_ans())
