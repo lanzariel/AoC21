@@ -4,32 +4,30 @@ path = sys.argv[1]
 with open(path, 'r') as f:
     lines = [i.strip() for i in f.readlines()]
 
-def binary_write(n, size):
-    two_pow = 2**(size-1)
+def ternary_write(n, size):
+    three_pow = 3**(size-1)
     ans = []
     for i in range(size):
-        if n >= two_pow:
-            ans.append(1)
-            n -= two_pow
-        else:
-            ans.append(0)
-        two_pow = two_pow//2
+        digit = n//three_pow
+        ans.append(digit)
+        n = n-three_pow*digit
+        three_pow = three_pow//3
     return ans
 
-def binary_read(bin):
-    two_pow = 2**(len(bin)-1)
+def ternary_read(ter):
+    three_pow = 3**(len(ter)-1)
     ans = 0
-    for digit in bin:
-        ans += digit*two_pow
-        two_pow = two_pow//2
+    for digit in ter:
+        ans += digit*three_pow
+        three_pow = three_pow//3
     return ans
 
 def was_visited(bin, index):
-    return bin[index]==1
+    return bin[index]>=2
 
 def visited_counterpart(bin, index):
     ans = bin.copy()
-    ans[index] = 1
+    ans[index] += 1
     return ans
 
 class Node:
@@ -66,10 +64,10 @@ class Node:
         if self.is_small():
             real_ans = [0 for i in self.paths]
             for i in range(len(self.paths)):
-                binary_rep  = binary_write(i, self.n_smalls)
-                if not was_visited(binary_rep, self.small_n):
-                    binary_next = visited_counterpart(binary_rep, self.small_n)
-                    next = binary_read(binary_next)
+                ternary_rep  = ternary_write(i, self.n_smalls)
+                if not was_visited(ternary_rep, self.small_n):
+                    ternary_next = visited_counterpart(ternary_rep, self.small_n)
+                    next = ternary_read(ternary_next)
                     #print(self.name, binary_rep, binary_next, next)
                     real_ans[next] = ans[i]
             ans = real_ans
@@ -103,9 +101,9 @@ class Graph:
             e_node.add_neighbor(s_node)
         n_smalls = len(self.smalls)
         for n in self.nodes:
-            n.set_paths([0 for col in range(2**n_smalls)])
+            n.set_paths([0 for col in range(3**n_smalls)])
             n.set_n_smalls(n_smalls)
-        starting_path = [0 for col in range(2**n_smalls)]
+        starting_path = [0 for col in range(3**n_smalls)]
         starting_path[0] = 1
         self.start.set_paths(starting_path)
         self.to_process = [self.start]
@@ -125,7 +123,18 @@ class Graph:
     def solve(self):
         while len(self.to_process) > 0:
             self.step()
-        return sum(self.end.paths)
+        ans = 0
+        for i in range(len(self.end.paths)):
+            ternary = ternary_write(i,len(self.smalls))
+            number_of_twos = 0
+            for el in ternary:
+                if el==2:
+                    number_of_twos += 1
+                    if number_of_twos > 1:
+                        break
+            if number_of_twos <= 1:
+                ans += self.end.paths[i]
+        return ans
 
     def adder_of_node(self, name):
         if name not in self.finder:
@@ -139,5 +148,9 @@ class Graph:
         else:
             return self.finder[name]
 
+#print(ternary_read([2,2,1]))
 g = Graph(lines)
+#print([i.name for i in g.smalls])
+#for i in range(len(g.end.paths)):
+    #print(ternary_write(i,3))
 print(g.solve())

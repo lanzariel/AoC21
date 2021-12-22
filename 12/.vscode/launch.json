@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["text0.txt"]
+            "args": ["12.txt"]
         }
     ]
 }
