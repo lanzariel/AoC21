@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "pythonPath": "/home/hacker/miniconda3/envs/competition/bin/python",
+            "python": "/home/hacker/miniconda3/envs/competition/bin/python",
             "program": "${file}",
             "console": "integratedTerminal",
             "args": ["17/text.txt"]
