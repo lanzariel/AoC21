@@ -111,19 +111,19 @@ class Number:
         ans.reduce()
         return ans
 
+max_val = 0
+for first_line in range(len(lines)):
+    for second_line in range(len(lines)):
+        if first_line != second_line:
+            first_element = Number(lines[first_line], -1)
+            second_element = Number(lines[second_line], -1)
+            added = first_element + second_element
+            added.final_fix()
+            max_val = max(max_val, added.magnitude)
+        
 
+print(max_val)
 
-first_element = Number(lines[0], -1)
-for addendum in lines[1:]:
-    first_element = first_element + addendum
-    #print(first_element)
-
-
-#print(first_element)
-
-first_element.final_fix()
-print(first_element)
-print(first_element.magnitude)
 
 
 #print(n1 + n2)
