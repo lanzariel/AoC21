@@ -11,7 +11,7 @@
             "python": "/home/hacker/miniconda3/envs/competition/bin/python",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["19/text.txt"]
+            "args": ["21/text.txt"]
         }
     ]
 }

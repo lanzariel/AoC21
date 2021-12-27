@@ -126,8 +126,23 @@ class Scanner:
                 to_process.add(ne)
                 pbar.update(1)
             processed.append(current)
+        for i in to_process:
+            processed.append(i)
         pbar.close()
         self.processed = processed
+    
+    def largest_m_distance(self):
+        s_pos = [i.shift_v for i in self.processed]
+        print(s_pos)
+        ans = 0
+        for i in s_pos:
+            for j in s_pos:
+                dist = 0
+                for ind in range(3):
+                    dist += abs(i[ind]-j[ind])
+                if dist >= ans:
+                    ans = dist
+        return ans
 
 # Reading results 
 sc_list = []
@@ -150,4 +165,4 @@ base = sc_list[0]
 #print(t_1.extra_beacons)
 
 base.process_scanners(sc_list[1:])
-print(len(base.extra_beacons))
+print(base.largest_m_distance())
