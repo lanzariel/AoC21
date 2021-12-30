@@ -79,10 +79,6 @@ class DynamicProgram:
 
 g = DynamicProgram(3,21)
 g.compute_solve()
-#print(g.get(1,1,0,20,20))
-#for i in range(10):
-#  for j in range(10):
-#    print(i, j, g.get(i,j,0,0,0))
 print(max(g.get_solution(lines)))
 
     

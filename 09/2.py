@@ -32,14 +32,17 @@ class Location:
 
     def __str__(self):
         return str(self.val) + "(" +str(self.row) + ", " + str(self.col) +  ")"
+
     def __repr__(self):
         return str(self)
+
     def __add__(self, other):
         return self.val + other.val
+
     def __radd__(self, other):
         return self.val + other
-outbound = Location(-1, -1, -1)
 
+outbound = Location(-1, -1, -1)
 tab = [[int(i) for i in j.strip()] for j in lines]
 
 
@@ -59,9 +62,6 @@ class Board:
         elif c_new < 0 or c_new >= len(self.chessboard[0]):
             return outbound
         else:
-            #print(r_new, c_new)
-            #print(len(self.chessboard[0]))
-            #print(len(self.chessboard))
             return self.chessboard[r_new][c_new]
 
     def tab_fill(self, tab):
@@ -80,7 +80,7 @@ class Board:
                 el.l = self.relative_position(el, -1, 0)
 
     def find_basins(self):
-        to_process = set([i for j in self.chessboard for i in j])
+        to_process = set([i for j in self.chessboard for i in j if i.val != 9])
         basins = []
         while(len(to_process)>0):
             el = to_process.pop()
@@ -88,10 +88,12 @@ class Board:
             to_process_basin = set(el.neighbors())
             while len(to_process_basin) > 0:
                 new_el = to_process_basin.pop()
+                if new_el in to_process:
+                    to_process.remove(new_el)
                 if new_el.val != 9 and new_el.val != -1:
                     nbs = new_el.neighbors()
                     valid_nbs = [i for i in nbs if i.val !=9 and (i in to_process)]
-                    for neighbor in nbs:
+                    for neighbor in valid_nbs:
                         if neighbor in to_process:
                             to_process.remove(neighbor)
                     to_process_basin.update(valid_nbs)

@@ -68,7 +68,6 @@ class Node:
                 if not was_visited(ternary_rep, self.small_n):
                     ternary_next = visited_counterpart(ternary_rep, self.small_n)
                     next = ternary_read(ternary_next)
-                    #print(self.name, binary_rep, binary_next, next)
                     real_ans[next] = ans[i]
             ans = real_ans
         return ans
@@ -109,10 +108,6 @@ class Graph:
         self.to_process = [self.start]
 
     def step(self):
-        #print([i.name for i in self.to_process])
-        #for i in self.nodes:
-        #    print(i.name, i.paths)
-        #print()
         new_to_process = set()
         for el in self.to_process:
             for n in el.neighbors:
@@ -148,9 +143,5 @@ class Graph:
         else:
             return self.finder[name]
 
-#print(ternary_read([2,2,1]))
 g = Graph(lines)
-#print([i.name for i in g.smalls])
-#for i in range(len(g.end.paths)):
-    #print(ternary_write(i,3))
 print(g.solve())

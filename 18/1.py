@@ -116,14 +116,7 @@ class Number:
 first_element = Number(lines[0], -1)
 for addendum in lines[1:]:
     first_element = first_element + addendum
-    #print(first_element)
 
-
-#print(first_element)
 
 first_element.final_fix()
-print(first_element)
 print(first_element.magnitude)
-
-
-#print(n1 + n2)

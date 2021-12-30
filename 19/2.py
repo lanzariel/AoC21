@@ -160,9 +160,6 @@ while it < len(lines):
 
 # Making big map
 base = sc_list[0]
-#t_1 = base.overlap_finder([sc_list[1]])
-
-#print(t_1.extra_beacons)
 
 base.process_scanners(sc_list[1:])
 print(base.largest_m_distance())

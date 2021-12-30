@@ -70,6 +70,6 @@ class SmartPoly:
         return max(v) - min(v)
 
 p = SmartPoly(poly, rules)
-for i in range(10):
+for i in range(40):
     p.step()
 print(int(p.ans_1()))

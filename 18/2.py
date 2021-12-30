@@ -123,7 +123,3 @@ for first_line in range(len(lines)):
         
 
 print(max_val)
-
-
-
-#print(n1 + n2)

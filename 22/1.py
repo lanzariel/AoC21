@@ -20,9 +20,9 @@ class Rectangle:
             extremes = [i.split("=")[1] for i in extremes]
             extremes = tuple(tuple(int(i) for i in j.split("..")) for j in extremes)
             self.extremes = tuple((i[0]-.5, i[1]+.5) for i in extremes)
-            #fixer = lambda x : min(max(x, -50.5), 50.5)
-            #sm_fifty = lambda x : (fixer(x[0]), fixer(x[1]))
-            #self.extremes = [sm_fifty(i) for i in  self.extremes]
+            fixer = lambda x : min(max(x, -50.5), 50.5)
+            sm_fifty = lambda x : (fixer(x[0]), fixer(x[1]))
+            self.extremes = [sm_fifty(i) for i in  self.extremes]
         else:
             self.extremes = line
             self.state = "off"

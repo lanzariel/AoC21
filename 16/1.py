@@ -7,7 +7,6 @@ with open(path, 'r') as f:
 # Convert to binary by convenience
 expected_len = 4*len(lines[0])
 bin_str = bin(int(lines[0], 16))[2:].zfill(expected_len)
-print(bin_str)
 
 # Creating some structure 
 

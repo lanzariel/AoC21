@@ -76,5 +76,4 @@ class Packet:
             self.rest = big_str[next_index:]
 
 p = Packet(bin_str)
-#print(p.son_vsum)
 print(p.value)

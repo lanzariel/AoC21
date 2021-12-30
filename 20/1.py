@@ -66,5 +66,5 @@ class Image:
 my_i = Image(mask, image)
 my_i.step()
 my_i.step()
-my_i.print_image()
+#my_i.print_image()
 print(my_i.count_ones())

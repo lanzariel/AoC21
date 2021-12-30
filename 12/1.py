@@ -111,10 +111,6 @@ class Graph:
         self.to_process = [self.start]
 
     def step(self):
-        #print([i.name for i in self.to_process])
-        #for i in self.nodes:
-        #    print(i.name, i.paths)
-        #print()
         new_to_process = set()
         for el in self.to_process:
             for n in el.neighbors:
