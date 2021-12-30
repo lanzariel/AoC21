@@ -30,7 +30,6 @@ def generate_permutations(lst):
         real_ans.extend(factor)
     return real_ans
 permutations = generate_permutations([0,1,2,3,4,5,6])
-#print(generate_permutations([1,2,3]))
 print("Permutations ready")
 
 class Digit:
@@ -121,7 +120,6 @@ class LineParse:
             digit = d.get_digit()
             current_digit_list.append(digit)
             number += digit
-        print(number)
         return number
 
     def sol_a(self):

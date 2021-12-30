@@ -14,11 +14,6 @@ l = len(v)
 for i in range(len(d)):
     for j in range(l):
         d[i] += dist(i, v[j])
-#print(v)
-#print(d)
 min_val = min(d)
 min_ind = d.index(min_val)
-print(min_val, min_ind)
-print(sum(v)/len(v))
-#print(min_ind)
-#print(v[min_ind])
+print(int(min_val))

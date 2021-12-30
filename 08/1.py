@@ -125,5 +125,5 @@ for l in lines:
 
 print(f'The solution of a) is {sol_a}\n')
 
-print(f'There are {len(lines)} lines.')
-print(f'Solvable lines: {how_many_are_solvable}')
+#print(f'There are {len(lines)} lines.')
+#print(f'Solvable lines: {how_many_are_solvable}')

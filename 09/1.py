@@ -1,6 +1,5 @@
 import sys
 path = sys.argv[1]
-print(path)
 with open(path, "r") as f:
     lines = f.readlines()
 
@@ -44,9 +43,6 @@ class Board:
         elif c_new < 0 or c_new >= len(self.chessboard[0]):
             return outbound
         else:
-            #print(r_new, c_new)
-            #print(len(self.chessboard[0]))
-            #print(len(self.chessboard))
             return self.chessboard[r_new][c_new]
 
     def tab_fill(self, tab):

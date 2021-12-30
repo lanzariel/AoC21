@@ -8,7 +8,6 @@ prev = v[0]
 for v_it in range(3,len(v)):
     v_it_val = v[v_it]
     prev = v[v_it-3]
-    #print(v_it_val, prev)
     if v_it_val>prev:
         ans += 1
 print(ans)

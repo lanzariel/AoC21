@@ -12,10 +12,6 @@ l = len(v)
 for i in range(l):
     for j in range(l):
         d[i] += abs(v[i] - v[j])
-#print(v)
-#print(d)
 min_val = min(d)
 min_ind = d.index(min_val)
 print(min_val)
-#print(min_ind)
-#print(v[min_ind])

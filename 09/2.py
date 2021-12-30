@@ -1,6 +1,5 @@
 import sys
 path = sys.argv[1]
-print(path)
 with open(path, "r") as f:
     lines = f.readlines()
 
@@ -49,7 +48,7 @@ class Board:
     def __init__(self):
         self.chessboard = []
 
-    def addrow(row):
+    def addrow(self, row):
         self.chessboard.append(row)
 
     def relative_position(self, el, d_r, d_c):
@@ -98,8 +97,6 @@ class Board:
                     to_process_basin.update(valid_nbs)
                     processed.add(new_el)
             basins.append(processed)
-        print(basins)
-        print(sum([len(i) for i in basins]))
         return basins
 
     def ans_2(self):

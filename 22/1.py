@@ -47,7 +47,6 @@ class Rectangle:
         else:
             return 0
 
-    # Not Used
     def split_accordingly(self, other):
         splitpoints = []
         for i in range(3):
